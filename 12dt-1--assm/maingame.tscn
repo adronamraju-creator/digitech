@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://coofkdflsnj86"]
+
+[ext_resource type="Texture2D" uid="uid://cx1wllhh6ndit" path="res://maingame.png" id="1_2sw64"]
+[ext_resource type="Script" uid="uid://bay241sxfq8fe" path="res://maingame.gd" id="1_u3icf"]
+[ext_resource type="PackedScene" uid="uid://cckmdln71ook1" path="res://Enemy.tscn" id="2_cuu4a"]
+[ext_resource type="Texture2D" uid="uid://dicfgv3vspdjp" path="res://pausebutton.png" id="3_xu13d"]
+[ext_resource type="PackedScene" uid="uid://0ll66uupbtch" path="res://player.tscn" id="5_cuu4a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuu4a"]
+size = Vector2(23, 633.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfmxy"]
+size = Vector2(1162, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l262f"]
+size = Vector2(1152, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fputw"]
+size = Vector2(49, 643)
+
+[sub_resource type="Curve2D" id="Curve2D_cuu4a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 57, -149, 0, 0, 0, 0, 196, -151, 0, 0, 0, 0, 455, -149, 0, 0, 0, 0, 664, -147, 0, 0, 0, 0, 1027, -148, 0, 0, 0, 0, 822, -149, 0, 0, 0, 0, 1123, -148)
+}
+point_count = 7
+
+[node name="Node2D" type="Node2D" unique_id=1204595996 node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_u3icf")
+spawn_point = NodePath("Path2D/PathFollow2D")
+enemy_scene = ExtResource("2_cuu4a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1073001567]
+
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1115143224]
+position = Vector2(0.5, 331.25)
+shape = SubResource("RectangleShape2D_cuu4a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1109879568]
+position = Vector2(571, 0)
+shape = SubResource("RectangleShape2D_qfmxy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1978671715]
+position = Vector2(575, 672)
+shape = SubResource("RectangleShape2D_l262f")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=987020517]
+position = Vector2(1176.5, 324.5)
+shape = SubResource("RectangleShape2D_fputw")
+
+[node name="Pausebutton" type="Sprite2D" parent="." unique_id=925439167]
+position = Vector2(1057, 76)
+scale = Vector2(0.55284554, 0.6061947)
+texture = ExtResource("3_xu13d")
+
+[node name="Button" type="Button" parent="Pausebutton" unique_id=1987808813]
+offset_left = -85.01465
+offset_top = -87.430664
+offset_right = 85.01477
+offset_bottom = 75.88321
+flat = true
+
+[node name="Maingame" type="Sprite2D" parent="." unique_id=54119670]
+position = Vector2(576, 323.5001)
+scale = Vector2(0.70415646, 0.70021665)
+texture = ExtResource("1_2sw64")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=802230981]
+position = Vector2(0, 173)
+curve = SubResource("Curve2D_cuu4a")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1175723817]
+position = Vector2(57, -149)
+rotation = -0.014387498
+
+[node name="Timer" type="Timer" parent="." unique_id=1191149146]
+autostart = true
+
+[node name="CharacterBody2D" parent="." unique_id=297438814 instance=ExtResource("5_cuu4a")]
+position = Vector2(592, 543)
+
+[connection signal="pressed" from="Pausebutton/Button" to="." method="_pause_button_"]
+[connection signal="timeout" from="Timer" to="." method="_spawn_enemy"]

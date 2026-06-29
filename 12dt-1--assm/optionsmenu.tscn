@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://kq2a3tc35bp6"]
+
+[ext_resource type="Texture2D" uid="uid://dohodave80atl" path="res://optionsmenu.png" id="1_gtb43"]
+[ext_resource type="Script" uid="uid://db07ooy3wisc3" path="res://optionsmenu.gd" id="2_7qv4w"]
+
+[node name="Node2D" type="Node2D" unique_id=1956099929]
+
+[node name="Optionsmenu" type="Sprite2D" parent="." unique_id=1857534949]
+position = Vector2(575.9999, 324)
+scale = Vector2(0.6889951, 0.6886291)
+texture = ExtResource("1_gtb43")
+
+[node name="Button" type="Button" parent="Optionsmenu" unique_id=1553190554]
+offset_left = -283.02072
+offset_top = 201.8503
+offset_right = 272.86124
+offset_bottom = 259.9367
+flat = true
+script = ExtResource("2_7qv4w")
+
+[connection signal="pressed" from="Optionsmenu/Button" to="Optionsmenu/Button" method="_main_menu"]
