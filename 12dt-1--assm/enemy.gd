@@ -20,6 +20,7 @@ func take_damage() -> void:
 	if health > 1:
 		health =- 1
 	else:
+		global.score += 1
 		queue_free()
 		
 func _damage_player(body: Node2D) -> void:
