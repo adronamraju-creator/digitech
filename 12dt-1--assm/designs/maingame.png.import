@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dohodave80atl"
-path="res://.godot/imported/optionsmenu.png-15eb86933ba64b988c19a274ae43318d.ctex"
+uid="uid://cx1wllhh6ndit"
+path="res://.godot/imported/maingame.png-5fea98c123007478be68c3fbb7d8d9e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://optionsmenu.png"
-dest_files=["res://.godot/imported/optionsmenu.png-15eb86933ba64b988c19a274ae43318d.ctex"]
+source_file="res://designs/maingame.png"
+dest_files=["res://.godot/imported/maingame.png-5fea98c123007478be68c3fbb7d8d9e1.ctex"]
 
 [params]
 

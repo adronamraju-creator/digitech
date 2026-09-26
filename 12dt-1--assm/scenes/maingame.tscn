@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://coofkdflsnj86"]
 
-[ext_resource type="Texture2D" uid="uid://cx1wllhh6ndit" path="res://maingame.png" id="1_2sw64"]
-[ext_resource type="Script" uid="uid://bay241sxfq8fe" path="res://maingame.gd" id="1_u3icf"]
-[ext_resource type="PackedScene" uid="uid://cckmdln71ook1" path="res://Enemy.tscn" id="2_cuu4a"]
-[ext_resource type="Texture2D" uid="uid://dicfgv3vspdjp" path="res://pausebutton.png" id="3_xu13d"]
-[ext_resource type="PackedScene" uid="uid://0ll66uupbtch" path="res://player.tscn" id="5_cuu4a"]
-[ext_resource type="FontFile" uid="uid://cerunib435klw" path="res://Orbitron-VariableFont_wght.ttf" id="6_qfmxy"]
+[ext_resource type="Script" uid="uid://bay241sxfq8fe" path="res://scripts/maingame.gd" id="1_60i0e"]
+[ext_resource type="PackedScene" uid="uid://cckmdln71ook1" path="res://scenes/Enemy.tscn" id="2_wj18i"]
+[ext_resource type="Texture2D" uid="uid://dicfgv3vspdjp" path="res://designs/pausebutton.png" id="3_460fr"]
+[ext_resource type="Texture2D" uid="uid://cx1wllhh6ndit" path="res://designs/maingame.png" id="4_r5jia"]
+[ext_resource type="PackedScene" uid="uid://0ll66uupbtch" path="res://scenes/player.tscn" id="5_n6p2k"]
+[ext_resource type="FontFile" uid="uid://cerunib435klw" path="res://designs/Orbitron-VariableFont_wght.ttf" id="6_vlyvo"]
+[ext_resource type="Texture2D" uid="uid://bjhvuqk7oah61" path="res://designs/pausemenu-removebg-preview.png" id="7_wj18i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuu4a"]
 size = Vector2(23, 633.5)
@@ -26,13 +27,13 @@ _data = {
 point_count = 7
 
 [sub_resource type="LabelSettings" id="LabelSettings_l262f"]
-font = ExtResource("6_qfmxy")
+font = ExtResource("6_vlyvo")
 font_size = 50
 
 [node name="Node2D" type="Node2D" unique_id=1204595996 node_paths=PackedStringArray("spawn_point", "score_label")]
-script = ExtResource("1_u3icf")
+script = ExtResource("1_60i0e")
 spawn_point = NodePath("Path2D/PathFollow2D")
-enemy_scene = ExtResource("2_cuu4a")
+enemy_scene = ExtResource("2_wj18i")
 score_label = NodePath("Label")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1073001567]
@@ -56,7 +57,7 @@ shape = SubResource("RectangleShape2D_fputw")
 [node name="Pausebutton" type="Sprite2D" parent="." unique_id=925439167]
 position = Vector2(1057, 76)
 scale = Vector2(0.55284554, 0.6061947)
-texture = ExtResource("3_xu13d")
+texture = ExtResource("3_460fr")
 
 [node name="Button" type="Button" parent="Pausebutton" unique_id=1987808813]
 offset_left = -85.01465
@@ -68,7 +69,7 @@ flat = true
 [node name="Maingame" type="Sprite2D" parent="." unique_id=54119670]
 position = Vector2(576, 323.5001)
 scale = Vector2(0.70415646, 0.70021665)
-texture = ExtResource("1_2sw64")
+texture = ExtResource("4_r5jia")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=802230981]
 position = Vector2(0, 173)
@@ -81,8 +82,9 @@ rotation = -0.014387498
 [node name="Timer" type="Timer" parent="." unique_id=1191149146]
 autostart = true
 
-[node name="CharacterBody2D" parent="." unique_id=297438814 instance=ExtResource("5_cuu4a")]
+[node name="CharacterBody2D" parent="." unique_id=297438814 node_paths=PackedStringArray("bullet_time") instance=ExtResource("5_n6p2k")]
 position = Vector2(592, 543)
+bullet_time = NodePath("../Timer")
 
 [node name="Label" type="Label" parent="." unique_id=555802164]
 offset_left = 1005.0
@@ -92,5 +94,42 @@ offset_bottom = 111.0
 text = "0"
 label_settings = SubResource("LabelSettings_l262f")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1222766612]
+visible = false
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 1208.0
+offset_bottom = 688.0
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="PausemenuRemovebgPreview" type="Sprite2D" parent="ColorRect" unique_id=862866340]
+position = Vector2(583.99994, 340)
+scale = Vector2(1.7271365, 1.7326205)
+texture = ExtResource("7_wj18i")
+
+[node name="Control" type="Control" parent="ColorRect/PausemenuRemovebgPreview" unique_id=353266756]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -99.58676
+offset_right = 96.112885
+offset_bottom = 81.95679
+
+[node name="Button" type="Button" parent="ColorRect/PausemenuRemovebgPreview/Control" unique_id=456971511]
+visible = false
+layout_mode = 0
+offset_left = 0.5789871
+offset_top = 0.577167
+offset_right = 195.12064
+offset_bottom = 21.932102
+
+[node name="Button2" type="Button" parent="ColorRect/PausemenuRemovebgPreview/Control" unique_id=1874316478]
+visible = false
+layout_mode = 0
+offset_left = 0.57899475
+offset_top = 60.02469
+offset_right = 195.12067
+offset_bottom = 80.72221
+
 [connection signal="pressed" from="Pausebutton/Button" to="." method="_pause_button_"]
 [connection signal="timeout" from="Timer" to="." method="_spawn_enemy"]
+[connection signal="pressed" from="ColorRect/PausemenuRemovebgPreview/Control/Button" to="." method="_resume_game"]

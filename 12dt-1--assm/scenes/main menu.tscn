@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ln6vcfevn628"]
 
-[ext_resource type="Texture2D" uid="uid://be3kmgg7xl8il" path="res://mainmenu.png" id="1_7mewq"]
-[ext_resource type="Script" uid="uid://ctmb1ovdppn45" path="res://mainmenu.gd" id="2_bajiw"]
+[ext_resource type="Texture2D" uid="uid://be3kmgg7xl8il" path="res://designs/mainmenu.png" id="1_xsilq"]
+[ext_resource type="Script" uid="uid://ctmb1ovdppn45" path="res://scripts/mainmenu.gd" id="2_12vek"]
 
 [node name="Node2D" type="Node2D" unique_id=596981752]
 
 [node name="Mainmenu" type="Sprite2D" parent="." unique_id=665477185]
 position = Vector2(576, 324)
 scale = Vector2(0.8520711, 0.8548812)
-texture = ExtResource("1_7mewq")
+texture = ExtResource("1_xsilq")
 
 [node name="Button" type="Button" parent="Mainmenu" unique_id=1527612383]
 offset_left = -563.33325
@@ -16,7 +16,7 @@ offset_top = -123.993835
 offset_right = -391.98602
 offset_bottom = -84.22223
 flat = true
-script = ExtResource("2_bajiw")
+script = ExtResource("2_12vek")
 
 [node name="Button2" type="Button" parent="Mainmenu" unique_id=423590790]
 offset_left = -566.8541

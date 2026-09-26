@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cckmdln71ook1"]
 
-[ext_resource type="Script" uid="uid://dtgyblx6invlf" path="res://enemy.gd" id="1_s7bn3"]
+[ext_resource type="Script" uid="uid://dtgyblx6invlf" path="res://scripts/enemy.gd" id="1_s7bn3"]
 [ext_resource type="Texture2D" uid="uid://1pjxq10qa06h" path="res://Enemy.png" id="1_tt7e2"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=34599318 groups=["enemy"]]

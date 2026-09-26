@@ -39,6 +39,6 @@ func take_damage() -> void:
 	
 func _shoot() -> void:
 	var bullet =  bullet_scene.instantiate()
-	bullet.rotation = pivot.rotation
+	bullet.global_rotation = pivot.global_rotation
 	bullet.global_position = bullet_spawn.global_position
 	add_sibling(bullet)

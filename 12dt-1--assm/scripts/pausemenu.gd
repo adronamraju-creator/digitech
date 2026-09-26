@@ -1,4 +1,4 @@
-extends Button
+extends Control
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,5 +11,9 @@ func _process(delta: float) -> void:
 	pass
 
 
+func _options_menu() -> void:
+	get_tree().change_scene_to_file("res://scenes/optionsmenu.tscn")
+
+
 func _main_menu() -> void:
-	get_tree().change_scene_to_file("res://main menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main menu.tscn")

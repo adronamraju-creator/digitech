@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dicfgv3vspdjp"
-path="res://.godot/imported/pausebutton.png-41d1a51bdd5431d4ec7b0e386db06d6e.ctex"
+uid="uid://dohodave80atl"
+path="res://.godot/imported/optionsmenu.png-f12b840cd1d7bcc441b8016aa267e728.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pausebutton.png"
-dest_files=["res://.godot/imported/pausebutton.png-41d1a51bdd5431d4ec7b0e386db06d6e.ctex"]
+source_file="res://designs/optionsmenu.png"
+dest_files=["res://.godot/imported/optionsmenu.png-f12b840cd1d7bcc441b8016aa267e728.ctex"]
 
 [params]
 
