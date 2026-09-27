@@ -19,15 +19,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var direction: Vector2 = Vector2(0.0,0.0)
-	direction.x = Input.get_axis("ui_left","ui_right")
+	
+#Gets the players horizontal and vertical input
+	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up","ui_down")
 	
 	velocity = speed * direction.normalized()
 	
 	pivot.look_at(get_global_mouse_position())
 	
-	if Input.is_action_just_pressed("ui_shoot") and can_shoot:
-		_shoot()
+	if Input.is_action_just_pressed("ui_shoot"):
+		if can_shoot == true:
+			_shoot()
+		
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://scenes/main menu.tscn")
 	
 	move_and_slide()
 	
@@ -37,6 +43,7 @@ func take_damage() -> void:
 	else:
 		get_tree().call_deferred("reload_current_scene")
 	
+#Creates and positions a bullet
 func _shoot() -> void:
 	var bullet =  bullet_scene.instantiate()
 	bullet.global_rotation = pivot.global_rotation

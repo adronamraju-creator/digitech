@@ -11,7 +11,7 @@ func _new_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/maingame.tscn")
 
 func _options_() -> void:
-	get_tree().change_scene_to_file("res://scenes/maingame.tscn")
+	get_tree().change_scene_to_file("res://scenes/optionsmenu.tscn")
 
 func _exit_() -> void:
 	get_tree().quit()
